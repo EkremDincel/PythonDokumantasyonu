@@ -3,3 +3,4 @@ Bu depo Yazbel sitesinde bulunan Python Dokümanlarına katkıda bulunma amacı 
 
   - "İşleçler" konusunun 'Değer Atama İşleçleri" başlığına "walrus işleci" eklendi.
   - "İleri Düzey Fonksiyonlar" konusuna "İç İçe Fonksiyonlar" ve "Üreteçler" eklendi.
+  - Standart kütüphanede bulunan "Pickle" modülü eklendi.
