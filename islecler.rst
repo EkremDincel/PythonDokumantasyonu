@@ -1171,7 +1171,7 @@ zor. En iyisi bir örnekle başlayalım::
     else:
         print("Çok uzun bir adın var.")
 
-Gördüğünüz gibi girilen ``string``'in uzunluğuna göre ekrana bir çıktı yazdırmaktayız.
+Gördüğünüz gibi girilen karakter dizisinin uzunluğuna göre ekrana bir çıktı yazdırmaktayız.
 Python3.8'e sahipseniz vereceğimiz örnekleri kendiniz de deneyebilirsiniz.
 Bir de ``:=`` işleci ile bu kodu nasıl yazabileceğimize bakalım::
 
