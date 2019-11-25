@@ -7,6 +7,7 @@ pickle Modülü
 *************
 
 **Kaynak Kodu:** https://github.com/python/cpython/blob/3.5/Lib/pickle.py
+
 **Belge Kaynağı:** https://docs.python.org/3.5/library/pickle.html
 
 Bu modül çoğu Python nesnesini ``bytes`` türüne çevirebilmektedir. Bu özelliği

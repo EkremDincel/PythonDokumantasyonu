@@ -1182,6 +1182,14 @@ Bir de ``:=`` işleci ile bu kodu nasıl yazabileceğimize bakalım::
     else:
         print("Çok uzun bir adın var.")
 
+
+Burada ``giriş`` değişkenine değer atamayı ``if`` ifadesinin içinde yaptık.
+Normalde böyle bir işlemi ``=`` ile yapamazdık::
+
+    if ( giriş = len(input("Adın ne? ")) ) < 4:
+
+    SyntaxError: invalid syntax
+
 Fark edebileceğiniz gibi walrus operatörü bizi bir satır fazladan yazmaktan 
 kurtardı. Kullanıcıdan alınan bilginin giriş değişkenine nasıl atandığına dikkat
 edin. ``giriş`` değişkeninden sonra ``:=`` işlecini kullanıyoruz ve aynı zamanda
