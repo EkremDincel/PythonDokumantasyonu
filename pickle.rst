@@ -25,7 +25,7 @@ Fonksiyonlar
 =============
 
 Pickle modülünün içinde burada bahsetmeyeceğimiz bir kaç yardımcı sınıf bulunmaktadır
-ancak inceleyeceğimiz 4 temel fonksiyon kullanılarak da sınıflar ile yapabilecek-
+ancak inceleyeceğimiz dört temel fonksiyon kullanılarak da sınıflar ile yapabilecek-
 lerimizin çoğu yapılabilir.
 
 **pickle.dumps(obj, protocol=None , * , fix_imports=True)**
@@ -43,7 +43,7 @@ lerimizin çoğu yapılabilir.
     
 .. note:: Bu çevrilmiş hal ``bytes(1)`` ile karıştırılmamalıdır. Çünkü pickle modülündeki amaç
           bu ``bytes``'ın daha sonra tekrar ``1`` verisinin elde edilebilmesinde kullanılmasıdır
-          ve çalışma şekli farklıdır. ``bytes(1)`` ise bize verilen sayı miktarında byte'lardan
+          ve çalışma şekli farklıdır. ``bytes(1)`` ise bize verilen sayı miktarında ``byte``'lardan
           oluşan boş bir liste vermektedir.
 
 
@@ -126,14 +126,17 @@ değişkenini daha sonra tekrar kullanmak için kaydetmemiz lazım. İşte bunun
 durumlarda ``oyuncu`` örneğimizin ne kadar çok niteliği olursa olsun ``dump`` fonksiyonu
 imdadımıza yetişiyor::
 
-    with open("oyuncu bilgileri.txt","wb") as dosya:
+    with open("oyuncu bilgileri.pkl","wb") as dosya:
         pickle.dump(oyuncu,dosya)
 
 Artık oyun bir daha açıldığında oyuncu karakterimizi bütün nitelikleri aynı olacak
 şekilde yeniden yükleyebiliriz::
 
-    with open("oyuncu bilgileri.txt","rb") as dosya:
+    with open("oyuncu bilgileri.pkl","rb") as dosya:
         oyuncu = pickle.load(dosya)
+
+.. note:: Bu işlemleri yaparken kullandığımız dosya uzantısı önemli değildir. Biz burada
+          'pickle'ın bir nevi kısaltması olan '.pkl' uzantısı kullandık.
 
 Eğer gerçek bir uygulamada kullanıcı bu dosyayı değiştirmeye çalışırsa 
 (kullanıcının pickle modülünü kullanmayı bilmediğini varsayıyoruz :D) kendi lehine
@@ -150,20 +153,13 @@ bilgisayarlara aktarmak da mümkündür. Python ile internet üzerinden haberle�
 
 Şimdi pickle ile json arasındaki birkaç önemli farktan bahsedelim.
     * JSON verileri unicode olarak, çoğunlukla da ``utf-8`` olarak saklar. Pickle modülü ise bunu ``bytes`` olarak saklar.
-    * JSON insanlar tarafından okunulabilecek bir formatta iken, 
-    pickle çıktıları okunulabilir değildir.
+    * JSON insanlar tarafından okunulabilecek bir formatta iken, pickle çıktıları okunulabilir değildir.
     * JSON diller arasında da veri aktarımında yoğun olarak kullanılırken pickle, Python'a özgüdür.
-    * Python'daki ``json`` modülü sadece bazı gömülü veri tiplerini (``int``,``str`` gibi) 
-    saklayabilirken ``pickle`` modülü neredeyse bütün python nesneleri saklayabilir.
+    * Python'daki ``json`` modülü sadece bazı gömülü veri tiplerini (``int``,``str`` gibi) saklayabilirken ``pickle`` modülü neredeyse bütün python nesneleri saklayabilir.
 
 Son olarak pickle modülü ile kullanılamayacak birkaç nesne türünden bahsetmek istiyorum:
     * Türü ``class <module>`` olan nesneler (örneğin ``math`` modülü)
     * Generator nesneleri (örneğin: ``(i for i in range(10))``)
     * Lambda fonksiyonları (normal fonksiyonlar pickle ile kullanılabilir)
-    * Bildiğiniz gibi Python, C dili ile yazılmıştır. Bu sayede C dili ile Python 
-    eklentileri yazılabilmektedir. Bunların bazıları pickle ile kullanılamayabilir.
-    * Eğer kendi tanımladığınız bir sınıf örneğini kaydettikten sonra ``load`` fonksiyonu
-    ile yüklemeye çalışıyorsanız ama bunu yapan kod içerisinde bu sınıf silinmiş veya
-    henüz bu sınıf tanımlanmamış ise, yani kodunuz bu sınıfı herhangi bir şekilde (siz tanımlamış 
-    veya import etmiş olabilirsiniz) içermiyor ise veri yüklenemeyecek ve hata 
-    yükseltilecektir. Aynı şey fonksiyonlar için de geçerlidir.
+    * Bildiğiniz gibi Python, C dili ile yazılmıştır. Bu sayede C dili ile Python eklentileri yazılabilmektedir. Bunların bazıları pickle ile kullanılamayabilir.
+    * Eğer kendi tanımladığınız bir sınıf örneğini kaydettikten sonra ``load`` fonksiyonu ile yüklemeye çalışıyorsanız ama bunu yapan kod içerisinde bu sınıf silinmiş veya henüz bu sınıf tanımlanmamış ise, yani kodunuz bu sınıfı herhangi bir şekilde (siz tanımlamış veya import etmiş olabilirsiniz) içermiyor ise veri yüklenemeyecek ve hata yükseltilecektir. Aynı şey fonksiyonlar için de geçerlidir.
