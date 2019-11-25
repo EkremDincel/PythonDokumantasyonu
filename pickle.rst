@@ -151,11 +151,11 @@ için pickle modülünü kullanarak herhangi bir değişkeni internet üzerinden
 bilgisayarlara aktarmak da mümkündür. Python ile internet üzerinden haberleşme
 örneklerine bakmak istiyorsanız internette 'python socket library' aramasını yapabilirsiniz.
 
-Şimdi pickle ile json arasındaki birkaç önemli farktan bahsedelim.
+Şimdi pickle ile json arasındaki birkaç önemli farktan bahsedelim:
     * JSON verileri unicode olarak, çoğunlukla da ``utf-8`` olarak saklar. Pickle modülü ise bunu ``bytes`` olarak saklar.
     * JSON insanlar tarafından okunulabilecek bir formatta iken, pickle çıktıları okunulabilir değildir.
     * JSON diller arasında da veri aktarımında yoğun olarak kullanılırken pickle, Python'a özgüdür.
-    * Python'daki ``json`` modülü sadece bazı gömülü veri tiplerini (``int``,``str`` gibi) saklayabilirken ``pickle`` modülü neredeyse bütün python nesneleri saklayabilir.
+    * Python'daki ``json`` modülü sadece bazı gömülü veri tiplerini (``int``, ``str`` gibi) saklayabilirken ``pickle`` modülü neredeyse bütün Python nesneleri saklayabilir.
 
 Son olarak pickle modülü ile kullanılamayacak birkaç nesne türünden bahsetmek istiyorum:
     * Türü ``class <module>`` olan nesneler (örneğin ``math`` modülü)

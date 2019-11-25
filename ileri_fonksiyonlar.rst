@@ -3,7 +3,8 @@
    :keywords: python, fonksiyon, lambda, recursive, decorator, closure,
               özyinelemeli, bezeyiciler, kapalı fonksiyonlar ,
               nested , nonlocal , nested function , iç ,
-              iç içe , iç içe fonksiyonlar, generator, üreteç
+              iç içe , iç içe fonksiyonlar, generator, üreteç , yield ,
+              iterate , iterator
 
 .. highlight:: py3
 
@@ -1320,12 +1321,8 @@ kullanacağımız bir değişkeni silse ayıp olur. O da bunu yapmıyor zaten. A
 örnekteki kilit olaylardan biri de ``sayı`` değişkeninin sadece bir defa tanımlanması
 ve bu tanımın aynı ``say`` fonksiyonunda olduğu gibi ``sayıcı`` fonksiyonumuzun
 sadece bir çağrışına özgü olması. Burdan iki sonuca varıyoruz:
-	• ``sayıcı`` sınıfını birden fazla defa çağırsak bile geri döndürülen her ``say``
-	fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her ``say``
-	fonksiyonu kendisini tanımlayan ``sayıcı`` çağrışına ait olan ``sayı``
-	değişkenini kullanmaktadır.
-	• Her ``say`` fonksiyonunun kullandığı ``sayı`` değişkeni sadece bir defa ``0``
-	olarak tanımlanmakta ve daha sonra ``say`` değişkenimizi her çağrışımızda artmaktadır.
+	* ``sayıcı`` sınıfını birden fazla defa çağırsak bile geri döndürülen her ``say`` fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her ``say`` fonksiyonu kendisini tanımlayan ``sayıcı`` çağrışına ait olan ``sayı`` değişkenini kullanmaktadır.
+	* Her ``say`` fonksiyonunun kullandığı ``sayı`` değişkeni sadece bir defa ``0`` olarak tanımlanmakta ve daha sonra ``say`` değişkenimizi her çağrışımızda artmaktadır.
 
 Eğer bu son örneğimizi anlamakta zorluk çektiyseniz bunun çalışma mantığı
 olarak şunun ile aynı olduğunu söyleyebiliriz::
@@ -1592,13 +1589,8 @@ sayı dizisinin bir sonraki sayısını döndürecek bir üreteç yazalım::
 
 Gördüğünüz gibi üretecimiz bize fibonacci sayılarını vermektedir. Kodumuzu anlamaya
 çalışırsak:
-	• İlk yinelemede ``x``,``y`` ve ``z`` değişkenleri tanımlanıyır. Daha sonra ``while`` döngüsüne
-	giriliyor. Değişkenlerin değerleri değiştirildikten sonra ``yield x`` deyimine geldiğimiz
-	için ``next`` fonksiyonu ``x`` değerini döndürürerek üretecemizin çalışmasını durduruyor.
-	• İkinci yinelememizde normal bir kodda olacağı gibi ``while`` döngümüzün
-	başına gidiliyor. Aynı işlemler tekrarlanıyor. Tekrar ``yield`` deyimine geliniyor.
-	``x`` değeri döndürürülüyor. Üretecimizin çalışması durduruluyor ve aynı şeyler tekrar
-	etmeye devam ediyor.
+	* İlk yinelemede ``x``,``y`` ve ``z`` değişkenleri tanımlanıyır. Daha sonra ``while`` döngüsüne giriliyor. Değişkenlerin değerleri değiştirildikten sonra ``yield x`` deyimine geldiğimiz için ``next`` fonksiyonu ``x`` değerini döndürürerek üretecemizin çalışmasını durduruyor.
+	* İkinci yinelememizde normal bir kodda olacağı gibi ``while`` döngümüzün başına gidiliyor. Aynı işlemler tekrarlanıyor. Tekrar ``yield`` deyimine geliniyor. ``x`` değeri döndürürülüyor. Üretecimizin çalışması durduruluyor ve aynı şeyler tekrar etmeye devam ediyor.
 
 Üreteçlerin çok güzel özelliklerinden biri de ``for`` döngüsü ile kullanılabilmeleridir.
 Örneğin ``fibonacci`` üretecimiz için bunu uygulayalım (bu örneği kendiniz de denemenizi şiddetle

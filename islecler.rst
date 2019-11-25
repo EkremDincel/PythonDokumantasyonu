@@ -1200,7 +1200,7 @@ parantezi koymaz isek ne olur? Gelin bir örnek ile de onu deneyelim::
         print(giriş)
 
 Eğer bu kodu çalıştırsanız ekrana ``True`` yazıldığını veya hiçbir şey yazılmadığını
-görebilirsiniz. Oysa önceki parantez kullandığımız kodda ``giriş`` bir 
+görebilirsiniz. Oysa önceki parantez kullandığımız kodda ``giriş`` değişkeni bir 
 ``int``'di. Bu örneğimizde ise ilk önce ``len(input("Adın ne? "))  < 4`` kısmı 
 çalışıyor ve bunun sonucu daha sonra ``giriş`` değişkenimize atanıyor. Bu yüzden ``giriş``
 değişkenimiz ``True`` veya ``False``, yani bir ``bool`` oluyor. Eğer ``giriş`` değişkeni
