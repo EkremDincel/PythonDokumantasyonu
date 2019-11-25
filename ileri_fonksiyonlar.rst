@@ -1056,10 +1056,10 @@ olunca bunlara *Nested*, yani iç içe fonksiyonlar diyoruz.
 		def fonk2():
 			...
 
-Burada ``fonk1`` kapsayıcı (enclosing) fonksiyonumuz, ``fonk2`` ise içerdeki (nested)
+Burada ``fonk1`` kapsayıcı (*enclosing*) fonksiyonumuz, ``fonk2`` ise içerdeki (*nested*)
 fonksiyonumuz oluyor. İç içe fonksiyonlarımızın ilginç özellikleri olduğunu
 söyleyebiliriz. Ayrıca bu fonksiyonları iyice anlamak, ileride üreteçleri 
-(yani yürütücüleri) de
+(veya yürütücüleri) de
 daha iyi anlamamızı sağlayacaktır.
 
 İç içe fonksiyonları anlamanın en iyi yolu örnek üzerinden gitmektedir.
@@ -1088,9 +1088,9 @@ Son çıktımızda ise alışılmışın dışında bir ``<locals>`` ifadesi gö
 Şimdi biraz bunun üzerine konuşacağız.
 
 Normalde bir fonksiyon yazdığımızda ve bu fonksiyon başka bir fonksiyonun içerisinde
-olmadığında, programı çalıştırıldığımızda kod işleme sırası bu fonksiyona geldiğinde
+olmadığında, programı çalıştırıldığımızda ve kod işleme sırası bu fonksiyona geldiğinde
 fonksiyonumuz tanımlanmış olur. Yani bu fonksiyonun ne olduğu, ne yapacağı
-artık Python yorumlayıcı tarafından bilinmektedir. Ayrıca bu fonksiyondan sadece bir tane 
+artık Python yorumlayıcısı tarafından bilinmektedir. Ayrıca bu fonksiyondan sadece bir tane 
 vardır. Örneğin fonksiyonumuz şu şekilde ise::
 
 	def fonk():
@@ -1163,17 +1163,17 @@ ifadesini kullanmadan ``a`` değişkenine dışarıdan ulaşamayız.
 Ancak şöyle bir şey yaptığımızda::
 
 	def fonk():
-	    a=1
+		a=1
 		return a
 
 Artık ``dönüş = fonk()``  şeklinde ``a`` değişkenine erişmiz oluyoruz.
 Veya bunu yaptığımızda::
 
 	def fonk():
-	    global a
-	    a=1
+		global a
+		a=1
 
-Artık bu fonksiyonu bir defa çağırmamız ``a`` değişkenine erişebilmemiz için yeterli oluyor.
+Artık bu fonksiyonu bir defa çağırmamız ``a`` değişkenine dışarıdan erişebilmemiz için yeterli oluyor.
 
 Fakat değişekenlere erişmenin ilginç bir yolu daha var. Bu da ``nonlocal`` ifadesidir. 
 Tabii bu ifadenin tek yaptığı iş bu değildir ancak bu özelliği ileride
@@ -1221,8 +1221,8 @@ Peki biz burada fonksiyon içinde de küresel ``a``'yı kullanmak istersek nası
 
 	>>>a = 1
 	>>>def fonk():
-	       global a
-		   print(a)
+		global a
+		print(a)
 
 	>>> fonk()
 	1
@@ -1238,7 +1238,7 @@ Peki biz burada fonksiyon içinde de küresel ``a``'yı kullanmak istersek nası
 
 		return iç_fonk
 
-Örneğimizde ``iç_fonk``'un içindede de ``kapsayıcı_fonk``'a ait olan ``non_local_değişken``
+Örneğimizde ``iç_fonk``'un içinde de ``kapsayıcı_fonk``'a ait olan ``non_local_değişken``
 değişkenini kullanmak istersek bunu da ``nonlocal`` ile şöyle yapabiliriz::
 
 	def kapsayıcı_fonk():
@@ -1292,7 +1292,7 @@ Bunu şu örnek üzerinden anlamaya çalışalım::
 
 Kodumuzu kısaca incelersek ``say`` fonksiyonunda ``sayı`` değişkenini ``nonlocal`` 
 hale getiriyoruz. Aynı zamanda ``say`` değişkeni her çağırıldığında ``sayı`` değiş-
-kenini de bir arttırıp ekrana yazıyoruz. Şimdi kodumuzu çalıştıralım::
+kenini de bir arttırıp değer olarak döndürüyoruz. Şimdi kodumuzu çalıştıralım::
 
 	>>> s = sayıcı()
 	>>> type(s)
@@ -1320,9 +1320,9 @@ kullanacağımız bir değişkeni silse ayıp olur. O da bunu yapmıyor zaten. A
 ``sayı`` değişkenini ``nonlocal`` hale getirmeseydik bunu yapamazdık. Aslında bu
 örnekteki kilit olaylardan biri de ``sayı`` değişkeninin sadece bir defa tanımlanması
 ve bu tanımın aynı ``say`` fonksiyonunda olduğu gibi ``sayıcı`` fonksiyonumuzun
-sadece bir çağrışına özgü olması. Burdan iki sonuca varıyoruz:
-	* ``sayıcı`` sınıfını birden fazla defa çağırsak bile geri döndürülen her ``say`` fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her ``say`` fonksiyonu kendisini tanımlayan ``sayıcı`` çağrışına ait olan ``sayı`` değişkenini kullanmaktadır.
-	* Her ``say`` fonksiyonunun kullandığı ``sayı`` değişkeni sadece bir defa ``0`` olarak tanımlanmakta ve daha sonra ``say`` değişkenimizi her çağrışımızda artmaktadır.
+sadece bir çağırılışına özgü olması. Burdan iki sonuca varıyoruz:
+	* ``sayıcı`` sınıfını birden fazla defa çağırsak bile geri döndürülen her ``say`` fonksiyonu ekrana sayıları hep sırayla yazdıracaktır. Çünkü her ``say`` fonksiyonu kendisini tanımlayan ``sayıcı`` çağırılışına ait olan ``sayı`` değişkenini kullanmaktadır.
+	* Her ``say`` fonksiyonunun kullandığı ``sayı`` değişkeni sadece bir defa ``0`` olarak tanımlanmakta ve daha sonra ``say`` fonksiyonumuzu her çağrışımızda artmaktadır.
 
 Eğer bu son örneğimizi anlamakta zorluk çektiyseniz bunun çalışma mantığı
 olarak şunun ile aynı olduğunu söyleyebiliriz::
@@ -1374,7 +1374,7 @@ tanımlanır? Şimdi gelin bu konuyu inceleyelim.
 
 Üreteçler, fonksiyonlara benzer şekilde tanımlanır. Hatta tek farkının ``yield``
 adındaki bir ifade olduğunu söyleyebiliriz. Hatırlarsanız iç içe sınıflar 
-konusunda ve ``nonlocal`` deyiminde üreteçler konusunda bolca atıfta bulunmuştuk.
+konusunda ve ``nonlocal`` deyiminde üreteçler konusuna bolca atıfta bulunmuştuk.
 Bu yüzden aynı işi yapacak bir iç içe fonksiyon ile bir üreteci karşılaştırarak
 konuya başlamak istiyorum::
 
@@ -1427,7 +1427,7 @@ Endişe etmeyin. İlerde ``üreteç_sayıcı``'nın nasıl çalıştığını in
 	4
 
 ``fonk`` ve ``üreteç``'in verdiği sonuçların aynı olduğunu görebiliyorsunuz. Şimdi
-bundan faydalanarak tanımlanma şekilleri anlamaya çalışalım.
+bundan faydalanarak tanımlanma şekillerini anlamaya çalışalım.
 
 ``fonk`` fonksiyonunun nasıl çalıştığını zaten iç içe fonksiyonlar konusunda gördük.
 Şimdi ``next`` fonksiyonu ve ``yield`` deyimi ile alakalı konuşalım. Öncelikle
@@ -1436,12 +1436,12 @@ için ise ``yield`` deyimini anlamamız gerekiyor. Eğer kodumuzu ve aldığım�
 çıktıları incelerseniz ``yield`` deyiminin, ``return`` deyimine bazı yönlerden
 benzediğini fark edebilirsiniz. Tabii önemli farklılıklar da var. Bir kere
 fark edeceğiniz gibi ``yield`` deyimi hangi değeri döndüreceğimizi
-belirliyor. Peki bu ``döndürme`` işleminin ``return`` ile değer döndürmekten 
+belirliyor. Peki bu döndürme işleminin ``return`` ile değer döndürmekten 
 ne farkı var? Bir fonksiyonun içinde ``return`` deyimine ulaşıldığında
 fonksiyon sonlanır ve fonksiyona ait yerel değişkenler silinir. ``yield`` deyiminde böyle
 bir şey söz konusu değildir. Aynı iç içe fonksiyonlarda ``nonlocal`` deyimi ile yaptığımız
-gibi üreteçlerin de yerel değişkenleri python tarafından saklanır. Ancak üreteçlerde
-belli değişkenler değil, yerel değişkenin tamamı saklanır. Şimdi yukarıdaki örnekte şu üç kısma
+gibi üreteçlerin de yerel değişkenleri Python tarafından saklanır. Ancak üreteçlerde
+belli değişkenler değil, yerel değişkenlerin tamamı saklanır. Şimdi yukarıdaki örnekte şu üç kısma
 tekrar bakarsak::
 
 	>>> type(fonksiyon_sayıcı)
@@ -1457,11 +1457,11 @@ tekrar bakarsak::
 	>>> type(üreteç)
 	<class 'generator'>
 
-Şunu görüyoruz ki ``üreteç_sayıc`` aslında bir fonksiyon. Ama alelade bir 
+Şunu görüyoruz ki ``üreteç_sayıcı`` aslında bir fonksiyon. Ama alelade bir 
 fonksiyon değil, çağrıldığında ``generator`` nesnesi döndüren bir fonksiyon.
-Yani aynı iç içe fonksiyonlarda önce fonksiyonu çağırıp dönüş değerini kullandığımız
-gibi üreteçlerde de önce üretici tanımladığımız fonksiyonu çağırıp dönüş değerini
-kullanmalıyız. Çünkü aslında üreteç olan şey, bu döndürülen değerdir. Ve aynı
+Yani aynı iç içe fonksiyonlarda önce kapsayıcı fonksiyonu çağırıp dönüş değerini kullandığımız
+gibi üreteçlerde de önce üreteci tanımladığımız fonksiyonu çağırıp dönüş değerini
+kullanmalıyız. Çünkü aslında üreteç olan nesne, bu döndürülen değerdir. Ve aynı
 iç içe fonksiyonlarda olduğu gibi bu durum birbirinden bağımsız ancak aynı işi
 yapan üreteçler oluşturmamızı sağlar. Dikkat ederseniz iç içe fonksiyonlar ve
 üreteçler, çalışma prensibi açısından o kadar benzerdir ki tek farklarının onları tanımlarken 
@@ -1481,8 +1481,8 @@ bakalım.
 'yield' Deyimi ve 'next' Fonksiyonu
 -----------------------------------------
 
-``next`` fonksiyonun gömülü bir fonksiyon olduğunu söylemiştik. ``yield`` metodu da
-üretecimizden değer döndürmemize sağlıyordu. Peki bu işlemler hangi kurallar çerçevesinde
+``next`` fonksiyonunun gömülü bir fonksiyon olduğunu söylemiştik. ``yield`` metodu da
+üretecimizden değer döndürmemizi sağlıyordu. Peki bu işlemler hangi kurallar çerçevesinde
 gerçekleşiyor?
 
 Basit bir üreteç tanımlayarak ``yield`` metodunu anlatmaya çalışalım::
@@ -1554,8 +1554,8 @@ fonksiyonunun değer döndürmek yerine hata yükseltmiş olmasıdır.
 
 Buraya kadar yaptığımız örnekleri iç içe metotlar ile de kolayca yapabilirdik. Üreteçlerin
 önemli bir özelliği de tanımlanırken , fonksiyonlar gibi, her türlü ifade ile kullanılabilmesidir.
-Örnek olarak ``while`` döngüsü kullanarak her 1'den başlayıp yinelediğimizde fibonacci
-sayı dizisinin bir sonraki sayısını döndürecek bir üreteç yazalım::
+Örnek olarak ``while`` döngüsünü kullanarak 1'den başlayarak her yinelediğimizde fibonacci
+sayı dizisinin bir sonraki elemanını döndürecek bir üreteç yazalım::
 
 	def fibonacci():
 		x = 1
@@ -1571,7 +1571,7 @@ sayı dizisinin bir sonraki sayısını döndürecek bir üreteç yazalım::
 		  iki sayının toplanması ile elde edildiği bir sayı dizisidir. İtalyan matematikçi 
 		  Leonardo Fibonacci'den adını alır. 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 şeklinde devam eder.
 
-Şimdi bun kodu çalıştıralım::
+Şimdi bu kodu çalıştıralım::
 
 	>>> f = fibonacci()
 	>>> next(f)
@@ -1589,7 +1589,7 @@ sayı dizisinin bir sonraki sayısını döndürecek bir üreteç yazalım::
 
 Gördüğünüz gibi üretecimiz bize fibonacci sayılarını vermektedir. Kodumuzu anlamaya
 çalışırsak:
-	* İlk yinelemede ``x``,``y`` ve ``z`` değişkenleri tanımlanıyır. Daha sonra ``while`` döngüsüne giriliyor. Değişkenlerin değerleri değiştirildikten sonra ``yield x`` deyimine geldiğimiz için ``next`` fonksiyonu ``x`` değerini döndürürerek üretecemizin çalışmasını durduruyor.
+	* İlk yinelemede ``x``, ``y`` ve ``z`` değişkenleri tanımlanıyor. Daha sonra ``while`` döngüsüne giriliyor. Değişkenlerin değerleri değiştirildikten sonra ``yield x`` deyimine geldiğimiz için ``next`` fonksiyonu ``x`` değerini döndürürerek üretecemizin çalışmasını durduruyor.
 	* İkinci yinelememizde normal bir kodda olacağı gibi ``while`` döngümüzün başına gidiliyor. Aynı işlemler tekrarlanıyor. Tekrar ``yield`` deyimine geliniyor. ``x`` değeri döndürürülüyor. Üretecimizin çalışması durduruluyor ve aynı şeyler tekrar etmeye devam ediyor.
 
 Üreteçlerin çok güzel özelliklerinden biri de ``for`` döngüsü ile kullanılabilmeleridir.
@@ -1678,7 +1678,7 @@ fonksiyonlar oluşturmak da dahildir.
 --------------------
 
 ``yield from`` deyimi bir üretecin içinde, başka bir üretecin ``yield`` ile
-döndürdüğü değerleri tekrar ``yield`` etmek istediğimizde kullanılabilir. 
+döndüreceği değerleri tekrar ``yield`` etmek istediğimizde kullanılabilir. 
 Şöyle bir örnek verelim::
 
 	def üreteç1():
@@ -1721,9 +1721,199 @@ Aslında ``yield from`` ile yazdığımız bu örnek şu kod ile eşdeğerdir::
 	>>>
 
 
-Liste Üreteçleri Konusunda Kısa Bir Bilgilendirme
-==================================================
- 
+Liste ve Sözlük Üreteçleri Konusunda Bilgilendirme
+============================================================
+
+Üreteçler konusunun başında söylediğimiz şu bilgiyi tekrarlayarak konumuza başlayalım:
+
+	Biz üreteçlerle az çok tanışıyoruz. Liste üreteçleri olsun, sözlük üreteçleri
+	olsun bu konu hakkında bir şeyler öğrenmiştik. Ancak biz üreteçlerimizi hep
+	şunun gibi tanımlamıştık::
+
+		>>> listem = [i for i in range(10)]
+		>>> listem
+		[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+	Dikkat ederseniz burada ``i for i in range(10)`` kısmı ``lambda`` fonksiyonlarında olduğu
+	gibi normal kodlardan biraz farklı bir söz dizimi kullanıyor. Bu söz dizimi ile karmaşık 
+	algoritmalar oluşturmak zordur, çoğunlukla da mümkün değildir. Zaten bunun bulunma sebebi
+	karmaşık algoritmalarda kullanılması değil, kısa işlerde yazım kolaylığı sağlamasıdır.
+	Yani bu yazım şekli, bazı fonksiyonların ``lambda`` olarak tanımlanması gibi,
+	üreteç tanımlamanın sadece kısa bir yoludur.
+
+Biz önceden üreteçleri şu şekilde kullanmayı biliyorduk::
+
+	>>> listem = [i for i in range(10)]
+	>>> listem
+	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Peki üreteç bu kodun neresinde? Aslında bu yazım oldukça kısaltılmış, yani kolaylaştırılmış
+bir yazım şeklidir. Biraz açacak olursan şunu elde ederiz::
+
+	>>> üreteç = (i for i in range(10))
+	>>> type(üreteç)
+	<class 'generator'>
+	>>> listem = list(üreteç)
+	>>> listem
+	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Şimdilik liste kısmını bir kenara koyarak üreteç kısmı ile ilgilenelim.
+
+Gördüğünüz gibi aslında şu yazım şekli::
+
+	>>> üreteç = (i for i in range(10))
+
+Bunun için bir kısaltmadır::
+
+	def üreteç_fonksiyonu():
+		for i in range(10):
+			yield i
+
+	üreteç = üreteç_fonksiyonu()
+
+Aynı ``lambda`` fonksiyonların normal fonksiyonlar için bir kısaltma olması gibi.
+
+Ancak şuraya dikkat etmek lazım ki::
+
+	üreteç = (i for i in range(10))
+
+Yazdığımızda, elimizde çağırıldığında bize üreteç döndürecek bir fonksiyonumuz yok.
+Yani ``üreteç`` değişkenimiz ``generator`` türünde bir nesne ve tek kullanımlık.
+Sonuçta üreteçler bir defa bittikten sonra bir daha kullanamaz. Eğer istersek
+yenisini tanımlayabiliriz. ``üreteç`` değişkenimizin bir defa bittikten sonra
+daha fazla onu kullanamayacağımızı şu şekilde görebiliriz::
+
+	>>> üreteç = (i for i in range(5))
+	>>> for i in üreteç:
+			print(i)
+
+	1
+	2
+	3
+	4
+	>>> for i in üreteç:
+			print(i)
+
+	>>>
+
+Gördüğünüz gibi ``üreteç`` değişkenimizi bir defa ``for`` döngüsü ile kullandığımızda
+ikinci defa kullanamamaktayız. Çünkü ilk döngüde üretecimiz bitene kadar çalıştı
+ve en sonunda ``StopIteration`` yükseltti. Artık istediğimiz kadar üretecimizi
+kullanmayı deneyelim, ``StopIteration`` yükseltmeye devam edecektir (unutmayalım ki ``for`` döngüsü
+``StopIteration`` hatalarını yakalar ve yakaladığında da çalışmayı bırakır) ::
+
+	>>> üreteç = (i for i in range(3))
+	>>> next(üreteç)
+	0
+	>>> next(üreteç)
+	1
+	>>> next(üreteç)
+	2
+	>>> next(üreteç)
+	StopIteration
+	>>> next(üreteç)
+	StopIteration
+
+Aynı şey normal yoldan tanımlanan üreteçler için de geçerlidir::
+
+	>>> def üreteç_fonksiyonu():
+			for i in range(3):
+				yield i
+
+	>>> üreteç = üreteç_fonksiyonu()
+	>>> next(üreteç)
+	0
+	>>> next(üreteç)
+	1
+	>>> next(üreteç)
+	2
+	>>> next(üreteç)
+	StopIteration
+	>>> next(üreteç)
+	StopIteration
+
+Buradaki fark üretecimizi bize veren fonksiyonumuz durduğu için yeni bir üreteç oluşturabiliyor
+olmamızdır::
+
+	>>> üreteç2 = üreteç_fonksiyonu()
+	>>> next(üreteç2)
+	0
+
+Ancak şu şekilde bir tanımlama yaptığımızda::
+
+	>>> üreteç = (i for i in range(3))
+	>>> type(üreteç)
+	<class 'generator'>
+
+Burada elde ettiğimiz üretecin kendisi oluyor, ve bu üreteç de tek kullanımlık. Şimdi
+bunların liste üreteçleri ile alakasına geri dönecek olursak::
+
+	>>> üreteç = üreteç_fonksiyonu()
+	>>> listem = list(üreteç)
+	>>> listem
+	[0, 1, 2]
+
+Gördüğünüz gibi aslında normal yoldan, yani ``yield`` ifadesi ile fonksiyon biçiminde,
+tanımlanmış üreteçler de ``list`` fonksiyonuna argüman olarak verilebilir. Aynı
+``for`` döngüsünde kullanılabilmesi gibi. Çünkü -kendi geliştirme arayüzünüzü kullanarak
+görebilirsiniz- dikkat edersiniz ``list`` fonksiyonunun ilk parametresinin adı ``iterable``'dır.
+Türkçe'ye çevirirsek *yinelenebilir*. Biz zaten üreteçlerin yinelenebilir nesnelere örnek olduğunu
+söylemiştir. Bu yüzden bütün üreteçleri ``list`` fonksiyonunu kullanarak bir listeye çevirebiliriz.
+Buna şu şekilde tanımlanan üreteçler de dahildir::
+
+	>>> üreteç = (i for i in range(3))
+
+Bu yüzden şu kod çalışmaktadır::
+
+	>>> üreteç = (i for i in range(3))
+	>>> list(üreteç)
+	[0, 1, 2]
+
+Ve şu yazım da yukarıda yazdığımızın daha da kısaltılmış halinden başka bir şey değildir::
+
+	>>> listem = [i for i in range(3)]
+
+Anlattıklarımız sözlük üreteçleri için de geçerlidir. Dikkat edersiniz kısa yoldan üreteç
+tanımlamaları ``(i for i in range(3))`` şeklinde, liste tanımlamaları ``[i for i in range(3)]`` şeklinde
+ve sözlük tanımlamaları da ``{str(i):i for i in range(3)}`` şeklinde yapılmaktadır. Bu liste tanımlamasını::
+
+	>>> üreteç = (i for i in range(3))
+	>>> listem = list(üreteç)
+
+Şu şekilde yazabileceğimiz gibi::
+
+	>>> üreteç = (i for i in range(3))
+	>>> listem = []
+	>>> for i in üreteç:
+			listem.append(i)
+
+Bu sözlük tanımlamasını da::
+
+	>>> üreteç = ((str(i),i) for i in range(3))
+	>>> sözlük = dict(üreteç)
+
+Şu şekilde yazabilirdik::
+
+	>>> üreteç = ((str(i),i) for i in range(3))
+	>>> sözlük = {}
+	>>> for key,value in üreteç:
+			sözlük[key] = value
+
+Son örneğimizde üretecimiz her yinelenişinde iki elemanlı bir ``tuple`` döndürüyor ve
+bu demetin ilk elemanı ``for`` döngüsü içinde ``key`` değişkenine, ikinci elemanı ise
+``value`` değişkenine atanıyor. Şunun gibi düşünebilirsiniz::
+
+	>>> for key,value in (('0',0),('1',1),('2',2)):
+			sözlük[key] = value
+
+Evet, artık üreteçler konusunda da kayda değer bilgiler öğrendiğimize göre bir sonraki konumuza geçelim.
+
+
+
+
+
+
+
 ..
 	**Coroutines konusu daha sonra eklenecek**
 
