@@ -145,25 +145,25 @@ Pickle modülünün ne kadar çok faydalı olabileceğinin anlaşıldığını d
 
 Ayrıca internet üzerinde veri aktarımında da her zaman ``bytes`` veri tipi kullanıldığı
 için pickle modülünü kullanarak herhangi bir değişkeni internet üzerinden başka
- bilgisayarlara aktarmak da mümkündür. Python ile internet üzerinden haberleşme
- örneklerine bakmak istiyorsanız internette 'python socket library' aramasını yapabilirsiniz.
+bilgisayarlara aktarmak da mümkündür. Python ile internet üzerinden haberleşme
+örneklerine bakmak istiyorsanız internette 'python socket library' aramasını yapabilirsiniz.
 
 Şimdi pickle ile json arasındaki birkaç önemli farktan bahsedelim.
-    • JSON verileri unicode olarak, çoğunlukla da ``utf-8``
+    * JSON verileri unicode olarak, çoğunlukla da ``utf-8``
     olarak saklar. Pickle modülü ise bunu ``bytes`` olarak saklar.
-    • JSON insanlar tarafından okunulabilecek bir formatta iken, 
+    * JSON insanlar tarafından okunulabilecek bir formatta iken, 
     pickle çıktıları okunulabilir değildir.
-    • JSON diller arasında da veri aktarımında yoğun olarak kullanılırken pickle, Python'a özgüdür.
-    • Python'daki ``json`` modülü sadece bazı gömülü veri tiplerini (``int``,``str`` gibi) 
+    * JSON diller arasında da veri aktarımında yoğun olarak kullanılırken pickle, Python'a özgüdür.
+    * Python'daki ``json`` modülü sadece bazı gömülü veri tiplerini (``int``,``str`` gibi) 
     saklayabilirken ``pickle`` modülü neredeyse bütün python nesneleri saklayabilir.
 
 Son olarak pickle modülü ile kullanılamayacak birkaç nesne türünden bahsetmek istiyorum:
-    • Türü ``class <module>`` olan nesneler (örneğin ``math`` modülü)
-    • Generator nesneleri (örneğin: ``(i for i in range(10))``)
-    • Lambda fonksiyonları (normal fonksiyonlar pickle ile kullanılabilir)
-    • Bildiğiniz gibi Python, C dili ile yazılmıştır. Bu sayede C dili ile Python 
+    * Türü ``class <module>`` olan nesneler (örneğin ``math`` modülü)
+    * Generator nesneleri (örneğin: ``(i for i in range(10))``)
+    * Lambda fonksiyonları (normal fonksiyonlar pickle ile kullanılabilir)
+    * Bildiğiniz gibi Python, C dili ile yazılmıştır. Bu sayede C dili ile Python 
     eklentileri yazılabilmektedir. Bunların bazıları pickle ile kullanılamayabilir.
-    • Eğer kendi tanımladığınız bir sınıf örneğini kaydettikten sonra ``load`` fonksiyonu
+    * Eğer kendi tanımladığınız bir sınıf örneğini kaydettikten sonra ``load`` fonksiyonu
     ile yüklemeye çalışıyorsanız ama bunu yapan kod içerisinde bu sınıf silinmiş veya
     henüz bu sınıf tanımlanmamış ise, yani kodunuz bu sınıfı herhangi bir şekilde (siz tanımlamış 
     veya import etmiş olabilirsiniz) içermiyor ise veri yüklenemeyecek ve hata 
