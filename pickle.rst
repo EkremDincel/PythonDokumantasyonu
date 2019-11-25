@@ -149,9 +149,7 @@ bilgisayarlara aktarmak da mümkündür. Python ile internet üzerinden haberle�
 örneklerine bakmak istiyorsanız internette 'python socket library' aramasını yapabilirsiniz.
 
 Şimdi pickle ile json arasındaki birkaç önemli farktan bahsedelim.
-    * JSON verileri unicode olarak, çoğunlukla da ``utf-8``
-    olarak saklar. Pickle modülü ise bunu ``bytes`` olarak saklar.
-    
+    * JSON verileri unicode olarak, çoğunlukla da ``utf-8`` olarak saklar. Pickle modülü ise bunu ``bytes`` olarak saklar.
     * JSON insanlar tarafından okunulabilecek bir formatta iken, 
     pickle çıktıları okunulabilir değildir.
     * JSON diller arasında da veri aktarımında yoğun olarak kullanılırken pickle, Python'a özgüdür.
