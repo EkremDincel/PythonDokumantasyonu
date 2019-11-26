@@ -81,7 +81,7 @@ Sihirli Methodlar
 için bu bölümde onlara değinmeyeceğiz.
 
 
-``__repr__`` Metodu
+`__repr__` Metodu
 ======================
 
 Bu metot ``repr`` fonksiyonu tarafından çağırılmaktadır. Örneğin::
