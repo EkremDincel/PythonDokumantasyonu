@@ -687,7 +687,7 @@ değiliz. Yani ``assert`` ifadesini şu şekilde de kullanabiliriz::
 
 Bu kodumuzu çalıştırdığımızda::
 
-    Merhaba! Adın ne? Ali
+    Merhaba! Adın ne\? Ali
     Hoşgeldiniz.
     >>>
 
