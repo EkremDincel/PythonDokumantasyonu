@@ -92,7 +92,7 @@ Bu metot ``repr`` fonksiyonu tarafından çağırılmaktadır. Örneğin::
 	>>> a.__repr__()
 	'[1, 2, 3, 4, 5]'
 
-Peki ne işe yarar bu ``repr`` fonksiyonu? Bundan daha önce `burada`_  
+Peki ne işe yarar bu ``repr`` fonksiyonu? Bundan daha önce burada_  
 bahsetmiştik ama yine de kısa bir şekilde değineceğim. 
 Aslında biz etkileşimli kabuğa bir şey yazdığımızda::
 
