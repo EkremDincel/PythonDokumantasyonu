@@ -1225,8 +1225,7 @@ Bu kodu dikkatlice incelersek şu çıkarımları yapabiliriz:
 		* ``mgr.__exit__(type(e) , e , e.__traceback__)`` işlemi yapılmaktadır ve dönüş değeri ``False`` ise yakalanan hata tekrar yükseltilerek kullanıcıya ulaştırılmaktadır.
 	* Eğer ``fonksiyon`` çalışırken bir hata yükselmez ise ``finally`` içindeki ``if`` şartı sağlanır ve ``mgr.__exit__(None, None, None)`` işlemi yapılır.
 
-Şimdi bu yaptığımız çıkarımlardan da bu metotları kendi sınıflarımıza eklerken
-kullancağımız başka çıkarımlarda bulunalım:
+Şimdi bu yaptığımız çıkarımlardan da bu metotları kendi sınıflarımıza eklerken kullanacağımız başka çıkarımlarda bulunalım:
 	* ``__enter__`` metodu sadece ``self`` parametresi alır. Fazladan bir parametre almaz.
 	* ``__enter__`` metodundan dönen değer ``with nesne as n`` ifadesindeki ``n`` değişkenine atanmaktadır.
 	* ``__exit__`` metodu her zaman ``self`` parametresinin yanında 3 parametre daha alır.
@@ -1326,8 +1325,7 @@ döndürür. Yani aslında yukarıdaki kodu şu şekilde de yazabiliriz::
 	* Daha sonra her döngüde ``__iter__`` metodunun döndürdüğü değerin ``__next__`` metodu çağırılarak ``for i in yinelenebilir`` dönüş değeri ifadesindeki ``i`` değişkenine atanmaktadır.
 	* Eğer çağırılan bu ``__next__`` methodu ``StopIteration`` yükseltirse ``while`` döngüsü kırılmakta, dolayısı ile de ``for`` döngümüz bitmektedir.
 
-Artık bu bilgilerden faydalanarak kendi sınıflarımıza ``__iter__`` ve ``__next__``
-metotlarını şu kurallar doğrultusunda ekleyebiliriz:
+Artık bu bilgilerden faydalanarak kendi sınıflarımıza ``__iter__`` ve ``__next__`` metotlarını şu kurallar doğrultusunda ekleyebiliriz:
 	* Yineleme işlemi başlamadan önce hazır hale getirmemiz gereken bir şey varsa bunu ``__iter__`` metodunun içerisinde yapabiliriz.
 	* ``__next__`` metodu çağırılıcak nesne ``__iter__`` metodunun dönüş değeri olmalıdır. Eğer istersek bu bir üreteç veya kendi nesnemiz yani ``self`` olabilir. İkisi için de örnek vereceğiz. 
 	* ``__next__`` metodumuzun döndüreceği değer her seferinde ``for i in yinelenebilir`` ifadesindeki ``i`` değişkenine atanacağı için döndüreceğimiz değeri buna göre belirlemeliyiz.
