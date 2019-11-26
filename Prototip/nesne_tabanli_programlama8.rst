@@ -96,11 +96,10 @@ Peki ne işe yarar bu ``repr`` fonksiyonu? Bundan daha önce `burada`_
 bahsetmiştik ama yine de kısa bir şekilde değineceğim. 
 Aslında biz etkileşimli kabuğa bir şey yazdığımızda::
 
-.. _burada: https://belgeler.yazbel.com/python-istihza/karakter_kodlama.html#repr
-
 	>>> a
 	[1, 2, 3, 4, 5]
 
+.. _burada: https://belgeler.yazbel.com/python-istihza/karakter_kodlama.html#repr
 burada Python'un yaptığı şu komutu işlemektir::
 
 	>>> print(repr(a))
