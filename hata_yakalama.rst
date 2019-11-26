@@ -703,7 +703,7 @@ aynı kodu çalıştırıp hiçbir şey yazmadan ``enter`` tuşuna basalım::
 
 Gördüğünüz gibi ``assert`` ifadesini de bu şeklide kullanıyoruz. Burada bir şeye
 dikkat etmek lazım ki ``assert`` bir fonksiyon değildir, bu yüzden parantezler
-ile su şekilde **kullanılmamalıdır** ::
+ile su şekilde **kullanılmamalıdır**::
 
     assert(ifade)
 
