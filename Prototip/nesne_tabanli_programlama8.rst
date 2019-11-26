@@ -19,7 +19,7 @@ Sihirli Methodlar (Magic Methods) Nedir?
 ******************************************
 
 Biz pythonda sınıf metotlarının ve örnek metotlarının ne olduklarını biliyoruz.
-Sihirli metotlar da birer örnek metotlarıdırlar. Ancak her örnek metodu bir
+Sihirli metotlar da birer örnek metodudur. Ancak her örnek metodu bir
 sihirli metot değildir. Peki sihirli metotları diğer metotlardan ayıran ne? 
 Ne gibi özellikleri var?
 
@@ -81,7 +81,7 @@ Sihirli Methodlar
 için bu bölümde onlara değinmeyeceğiz.
 
 
-`__repr__` Metodu
+``__repr__`` Metodu
 ======================
 
 Bu metot ``repr`` fonksiyonu tarafından çağırılmaktadır. Örneğin::
@@ -93,7 +93,7 @@ Bu metot ``repr`` fonksiyonu tarafından çağırılmaktadır. Örneğin::
 	'[1, 2, 3, 4, 5]'
 
 Peki ne işe yarar bu ``repr`` fonksiyonu? Bundan daha önce burada_
-.. _buraya: https://belgeler.yazbel.com/python-istihza/karakter_kodlama.html#repr
+.. _burada: https://belgeler.yazbel.com/python-istihza/karakter_kodlama.html#repr
 bahsetmiştik ama yine de kısa bir şekilde değineceğim. Aslında biz
 etkileşimli kabuğa bir şey yazdığımızda::
 
@@ -123,8 +123,8 @@ bu sınıfa ait bir örneğimiz bulunsun::
 	örnek = Öğrenci("Ahmet",12)
 
 .. note:: Unutmaylım ki şuanda Öğrenci sınıfımız biz yazmasak da object sınıfını miras
-		  alıyor. Bu yüzden biz tanımlamasak da şuan Öğrenci sınıfımız bir __repr__
-		  metoduna sahip ve bu da object sınıfından miras alınan __repr__ metodudur.
+		  alıyor. Bu yüzden biz tanımlamasak da şuan Öğrenci sınıfımız bir ``__repr__``
+		  metoduna sahip ve bu da object sınıfından miras alınan ``__repr__`` metodudur.
 
 Daha sonra programı çalıştırdığımızda etkileşimli kabuğa ``örnek`` yazarsak pek iç
 açıcı bir çıktı almıyoruz::
