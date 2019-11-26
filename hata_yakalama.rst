@@ -673,7 +673,8 @@ Burada ``ifade`` bir ``bool`` yani ``True`` veya ``False`` olabileceği gibi, (a
 eğer ``ifade``'nin değeri ``True`` ise ``assert`` ifademiz çalışmayacak, ``False`` ise 
 çalışacaktır. Yani ``assert`` ifademizin içine doğru olmasını istediğimiz durumu yazmalıyız ki
 eğer yanlış olursa hata yükseltsin. Ayırca ``assert`` ifademiz çalıştığında bir hata
-yükseleceği için program da sonlanacaktır. ``mesaj`` ise hata verildiğinde ekrana yazılmasını
+yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
+ programı sonlandırmak için de kullanabiliriz . ``mesaj`` ise hata verildiğinde ekrana yazılmasını
 istediğimiz mesajdır. Tabii ki ``raise`` ifadesinde olduğu gibi burada da bir mesaj vermek zorunda 
 değiliz. Yani ``assert`` ifadesini şu şekilde de kullanabiliriz::
 
