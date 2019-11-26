@@ -94,7 +94,6 @@ Bu metot ``repr`` fonksiyonu tarafından çağırılmaktadır. Örneğin::
 
 Peki ne işe yarar bu ``repr`` fonksiyonu? Bundan daha önce `burada`_  
 bahsetmiştik ama yine de kısa bir şekilde değineceğim. 
-
 .. _burada: https://belgeler.yazbel.com/python-istihza/karakter_kodlama.html#repr
 Aslında biz
 etkileşimli kabuğa bir şey yazdığımızda::
