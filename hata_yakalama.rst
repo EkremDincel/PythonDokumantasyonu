@@ -672,9 +672,8 @@ Burada ``ifade`` bir ``bool`` yani ``True`` veya ``False`` olabileceği gibi, (a
 ``bool`` fonksiyonu ile birlikte kullanılabilecek bir ifade de olabilir. Sonuç olarak
 eğer ``ifade``'nin değeri ``True`` ise ``assert`` ifademiz çalışmayacak, ``False`` ise 
 çalışacaktır. Yani ``assert`` ifademizin içine doğru olmasını istediğimiz durumu yazmalıyız ki
-eğer yanlış olursa hata yükseltsin. Ayırca ``assert`` ifademiz çalıştığında bir hata
-yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
- programı sonlandırmak için de kullanabiliriz . ``mesaj`` ise hata verildiğinde ekrana yazılmasını
+eğer yanlış olursa hata yükseltsin. Zaten ``assert`` kelimesi *“iddia etmek”* anlamına gelir. Yani biz ``assert`` ifadesini kullanarak bir ifadenin doğru olduğunu iddia ediyoruz, bu iddiamız yanlış ise Python bir hata yükseltiyor. Ayırca ``assert`` ifademiz çalıştığında bir hata yükseleceği için program da sonlanacaktır, yani bu özelliği istemediğimiz bir durum gerçekleştiğinde
+programı sonlandırmak için de kullanabiliriz . ``mesaj`` ise hata verildiğinde ekrana yazılmasını
 istediğimiz mesajdır. Tabii ki ``raise`` ifadesinde olduğu gibi burada da bir mesaj vermek zorunda 
 değiliz. Yani ``assert`` ifadesini şu şekilde de kullanabiliriz::
 
@@ -703,12 +702,29 @@ aynı kodu çalıştırıp hiçbir şey yazmadan ``enter`` tuşuna basalım::
 
 Gördüğünüz gibi ``assert`` ifadesini de bu şeklide kullanıyoruz. Burada bir şeye
 dikkat etmek lazım ki ``assert`` bir fonksiyon değildir, bu yüzden parantezler
-ile su şekilde **kullanılmamalıdır**::
+ile şu şekilde **kullanılmamalıdır**::
 
     assert(ifade)
 
 Bu kullanım hata vermeyecek olsa da farkında olmadan -ileride öğreneceğimiz
 bir konu- bir demet oluşturmuş oluyoruz.
+
+Son olarak geniş kodlar yazdığımızda, şu örnekteki gibi::
+
+    giriş = input("Merhaba! Adın ne? ")
+    if len(giriş) == 0:
+        raise AssertionError("İsim bölümü boş.")
+    print("Hoşgeldiniz.")
+
+``if`` ve ``raise`` ifadesi kullanmak yerine ``assert`` kullanmamızın iki avantajından bahsedelim.
+Öncelikle istediğiniz zaman geliştirme arayüzününün ``find`` özelliğini kullanarak bu anahtar kelimeleri
+bulup silebilir veya yorum satırı haline getirebilirsiniz. Bu özellik uzun bir kod yazdığımızda zaman kazanmamızı sağlar.
+İkinci olarak da python yorumlayıcısını komut satırından ``-O`` parametresi (*optimize* anlamına gelir) ile şu şekilde çağırdığımızda::
+
+    C:\Users\User> python -O kod_dosyası
+
+``kod_dosyası`` programımızdaki bütün ``assert`` ifadeleri python yorumlayıcısı tarafından yok sayılır ve çalıştırılmaz. Yani ``assert`` ifadelerinin hepsini yorum satırı haline getirmek istediğimizde bunun ile uğraşmak yerine bu özelliği kullanabiliriz.
+
 
 Bütün Hataları Yakalamak
 *************************
