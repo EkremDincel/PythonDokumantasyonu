@@ -721,7 +721,7 @@ Son olarak geniş kodlar yazdığımızda, şu örnekteki gibi::
 bulup silebilir veya yorum satırı haline getirebilirsiniz. Bu özellik uzun bir kod yazdığımızda zaman kazanmamızı sağlar.
 İkinci olarak da python yorumlayıcısını komut satırından ``-O`` parametresi (*optimize* anlamına gelir) ile şu şekilde çağırdığımızda::
 
-    C:\Users\User> python -O kod_dosyası
+    C:\\Users\\User> python -O kod_dosyası
 
 ``kod_dosyası`` programımızdaki bütün ``assert`` ifadeleri python yorumlayıcısı tarafından yok sayılır ve çalıştırılmaz. Yani ``assert`` ifadelerinin hepsini yorum satırı haline getirmek istediğimizde bunun ile uğraşmak yerine bu özelliği kullanabiliriz.
 
